@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestion_de_flotas/pages/welcome_page.dart';
+import 'package:gestion_de_flotas/routes/app_router.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,12 +8,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: Scaffold(
-        body: WelcomePage()
-      ),
+      title: 'Gestion de Flotas',
+      routerConfig: AppRouter.router,
     );
   }
 }

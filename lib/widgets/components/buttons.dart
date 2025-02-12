@@ -7,12 +7,12 @@ class HoverButton extends StatefulWidget {
   final double height;
 
   const HoverButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.width = 150.0,
     this.height = 50.0,
-  }) : super(key: key);
+  });
 
   @override
   _HoverButtonState createState() => _HoverButtonState();
@@ -25,6 +25,7 @@ class _HoverButtonState extends State<HoverButton> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click, // ✅ Cambia el cursor a una mano
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
       child: GestureDetector(
@@ -43,23 +44,22 @@ class _HoverButtonState extends State<HoverButton> {
                 : Colors.black, // 🔵 Normal: Fondo negro
             border: Border.all(
               color: isPressed
-                  ? const Color.fromARGB(
-                      255, 255, 255, 255)! // 🔴 En onPress: Borde más oscuro
+                  ? Colors.white // 🔴 En onPress: Borde blanco
                   : isHovered
                       ? const Color.fromARGB(255, 255, 108,
-                          45) // 🟡 En onHover: Borde menos oscuro
-                      : const Color.fromARGB(
-                          255, 0, 0, 0), // 🟢 Normal: Borde gris
+                          45) // 🟡 En onHover: Borde naranja
+                      : Colors.black, // 🟢 Normal: Borde negro
               width: 2,
             ),
-            borderRadius:
-                BorderRadius.circular(8), // 🔘 Borde redondeado moderado
+            borderRadius: BorderRadius.circular(8), // 🔘 Bordes redondeados
           ),
           alignment: Alignment.center,
           child: Text(
             widget.text,
             style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold),
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

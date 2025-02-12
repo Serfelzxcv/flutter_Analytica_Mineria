@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_de_flotas/gen/assets.gen.dart';
 import 'package:gestion_de_flotas/gen/fonts.gen.dart';
+import 'package:gestion_de_flotas/structure/dashboard.dart';
 import 'package:gestion_de_flotas/widgets/components/buttons.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
-
   @override
   State<WelcomePage> createState() => _WelcomePageState();
 }
-
 class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
@@ -40,10 +39,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                   ),
                   Expanded(
-                    flex: 1, // 50% de la pantalla con fondo transparente
+                    flex: 1, 
                     child: Container(
-                      // ignore: deprecated_member_use
-                      color: Colors.white.withOpacity(0), // Transparente
+                      color: Colors.white.withOpacity(0), 
                     ),
                   ),
                 ],
@@ -60,13 +58,13 @@ class _WelcomePageState extends State<WelcomePage> {
                       Center(
                           child: SizedBox(
                             height: constraints.maxHeight *
-                                0.1, // Usa el alto del padre, no de la pantalla
+                                0.1,
                           ),
                         ),
                         Center(
                           child: SizedBox(
                             height: constraints.maxHeight *
-                                0.5, // Usa el alto del padre, no de la pantalla
+                                0.5,
                             child: Assets.images.minero.image(
                               fit: BoxFit.fitWidth,
                             ),
@@ -75,7 +73,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         Center(
                           child: SizedBox(
                             height: constraints.maxHeight *
-                                0.17, // Usa el alto del padre, no de la pantalla
+                                0.17,
                             child: Assets.images.analyticaLogo.image(
                             )
                           ),
@@ -83,7 +81,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         Center(
                           child: SizedBox(
                             height: constraints.maxHeight *
-                                0.05, // Usa el alto del padre, no de la pantalla
+                                0.05,
                             child: Text(
                                 "Monitorea, gestiona y optimiza tu flota minera",
                                 style: TextStyle(
@@ -91,7 +89,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                   fontWeight: FontWeight.w600,
                                   fontSize:18
                                 ),
-                                ), // Para visualizar mejor
+                                ), 
                           ),
                         ),
                         Container(
@@ -101,7 +99,10 @@ class _WelcomePageState extends State<WelcomePage> {
                           child: HoverButton(
                             text: "Ingresar",
                             onPressed: () {
-                              print("Botón presionado");
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => Dashboard()),
+                              );
                             },
                             width: constraints.maxWidth * 0.15,
                             height: constraints.maxHeight * 0.05,
