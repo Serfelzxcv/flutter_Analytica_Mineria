@@ -27,17 +27,23 @@ class _WelcomePageState extends State<WelcomePage> {
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width * 0.6,
-            margin: EdgeInsets.only(top: 15, bottom: 15),
+            margin: EdgeInsets.only(top: 10, bottom: 10),
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return Column(
                   children: [
+                  Center(
+                      child: SizedBox(
+                        height: constraints.maxHeight *
+                            0.1, // Usa el alto del padre, no de la pantalla
+                      ),
+                    ),
                     Center(
                       child: SizedBox(
                         height: constraints.maxHeight *
-                            0.6, // Usa el alto del padre, no de la pantalla
+                            0.5, // Usa el alto del padre, no de la pantalla
                         child: Image.asset(
-                          'assets/images/minero.png',
+                          'assets/images/minero.png',fit:BoxFit.fitWidth,
                         ),
                       ),
                     ),
