@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_de_flotas/gen/assets.gen.dart';
+import 'package:gestion_de_flotas/gen/fonts.gen.dart';
 import 'package:gestion_de_flotas/widgets/components/buttons.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -13,8 +15,6 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -24,65 +24,96 @@ class _WelcomePageState extends State<WelcomePage> {
               Color.fromRGBO(56, 53, 53, 1),
               Color.fromRGBO(255, 255, 255, 1)
             ])),
-        child: Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.6,
-            margin: EdgeInsets.only(top: 10, bottom: 10),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Column(
-                  children: [
-                  Center(
-                      child: SizedBox(
-                        height: constraints.maxHeight *
-                            0.1, // Usa el alto del padre, no de la pantalla
+        child: Stack(
+          children:[
+            Positioned.fill(
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 1, 
+                    child: Opacity(
+                      opacity: 0.25,
+                      child: Assets.images.fondoMining.image(
+                        fit: BoxFit.fill,
+                        width: double.infinity,
                       ),
                     ),
-                    Center(
-                      child: SizedBox(
-                        height: constraints.maxHeight *
-                            0.5, // Usa el alto del padre, no de la pantalla
-                        child: Image.asset(
-                          'assets/images/minero.png',fit:BoxFit.fitWidth,
-                        ),
-                      ),
+                  ),
+                  Expanded(
+                    flex: 1, // 50% de la pantalla con fondo transparente
+                    child: Container(
+                      // ignore: deprecated_member_use
+                      color: Colors.white.withOpacity(0), // Transparente
                     ),
-                    Center(
-                      child: SizedBox(
-                        height: constraints.maxHeight *
-                            0.2, // Usa el alto del padre, no de la pantalla
-                        child: Image.asset(
-                          'assets/images/analytica_logo.png',
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: SizedBox(
-                        height: constraints.maxHeight *
-                            0.05, // Usa el alto del padre, no de la pantalla
-                        child: Text(
-                            "Monitorea, gestiona y optimiza tu flota minera"), // Para visualizar mejor
-                      ),
-                    ),
-                    Container(
-                      height: constraints.maxHeight * 0.01,
-                    ),
-                    Center(
-                      child: HoverButton(
-                        text: "Ingresar",
-                        onPressed: () {
-                          print("Botón presionado");
-                        },
-                        width: constraints.maxWidth * 0.15,
-                        height: constraints.maxHeight * 0.05,
-                      ),
-                    )
-                  ],
-                );
-              },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
+            Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.6,
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Column(
+                      children: [
+                      Center(
+                          child: SizedBox(
+                            height: constraints.maxHeight *
+                                0.1, // Usa el alto del padre, no de la pantalla
+                          ),
+                        ),
+                        Center(
+                          child: SizedBox(
+                            height: constraints.maxHeight *
+                                0.5, // Usa el alto del padre, no de la pantalla
+                            child: Assets.images.minero.image(
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: SizedBox(
+                            height: constraints.maxHeight *
+                                0.17, // Usa el alto del padre, no de la pantalla
+                            child: Assets.images.analyticaLogo.image(
+                            )
+                          ),
+                        ),
+                        Center(
+                          child: SizedBox(
+                            height: constraints.maxHeight *
+                                0.05, // Usa el alto del padre, no de la pantalla
+                            child: Text(
+                                "Monitorea, gestiona y optimiza tu flota minera",
+                                style: TextStyle(
+                                  fontFamily: FontFamily.mavenPro,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize:18
+                                ),
+                                ), // Para visualizar mejor
+                          ),
+                        ),
+                        Container(
+                          height: constraints.maxHeight * 0.03,
+                        ),
+                        Center(
+                          child: HoverButton(
+                            text: "Ingresar",
+                            onPressed: () {
+                              print("Botón presionado");
+                            },
+                            width: constraints.maxWidth * 0.15,
+                            height: constraints.maxHeight * 0.05,
+                          ),
+                        )
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ),
+        ]),
       ),
     );
   }
