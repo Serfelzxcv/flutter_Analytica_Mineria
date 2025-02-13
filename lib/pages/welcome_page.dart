@@ -3,6 +3,7 @@ import 'package:gestion_de_flotas/gen/assets.gen.dart';
 import 'package:gestion_de_flotas/gen/fonts.gen.dart';
 import 'package:gestion_de_flotas/structure/dashboard.dart';
 import 'package:gestion_de_flotas/widgets/components/buttons.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -99,10 +100,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           child: HoverButton(
                             text: "Ingresar",
                             onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(builder: (context) => Dashboard()),
-                              );
+                              context.go('/dashboard'); // Asegúrate de que '/dashboard' está definido en `go_router`
                             },
                             width: constraints.maxWidth * 0.15,
                             height: constraints.maxHeight * 0.05,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  final Function(String) onPageSelected;
+
+  const CustomDrawer({super.key, required this.onPageSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -17,28 +18,32 @@ class CustomDrawer extends StatelessWidget {
             title: Text('Inicio'),
             leading: Icon(Icons.home),
             onTap: () {
-              context.go('/dashboard'); // Solo cambia la ruta
+              onPageSelected('/dashboard'); // Enviar la ruta en lugar de un widget
+              Navigator.of(context).pop(); // Cerrar el Drawer
             },
           ),
           ListTile(
             title: Text('Page1'),
             leading: Icon(Icons.start),
             onTap: () {
-              context.go('/page1'); // Cambia la ruta sin hacer pop
+              onPageSelected('/page1');
+              Navigator.of(context).pop();
             },
           ),
           ListTile(
             title: Text('Page2'),
             leading: Icon(Icons.safety_check_outlined),
             onTap: () {
-              context.go('/page2');
+              onPageSelected('/page2');
+              Navigator.of(context).pop();
             },
           ),
           ListTile(
             title: Text('Page3'),
             leading: Icon(Icons.access_alarm_rounded),
             onTap: () {
-              context.go('/page3');
+              onPageSelected('/page3');
+              Navigator.of(context).pop();
             },
           ),
         ],
