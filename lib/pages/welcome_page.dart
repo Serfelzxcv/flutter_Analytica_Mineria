@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_de_flotas/gen/assets.gen.dart';
 import 'package:gestion_de_flotas/gen/fonts.gen.dart';
-import 'package:gestion_de_flotas/structure/dashboard.dart';
 import 'package:gestion_de_flotas/widgets/components/buttons.dart';
 import 'package:go_router/go_router.dart';
 

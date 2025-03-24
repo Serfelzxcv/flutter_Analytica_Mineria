@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gestion_de_flotas/widgets/custom_app_bar.dart';
-import 'package:gestion_de_flotas/widgets/custom_drawer.dart';
 import 'package:gestion_de_flotas/pages/home_page.dart';
 import 'package:gestion_de_flotas/pages/page1.dart';
 import 'package:gestion_de_flotas/pages/page2.dart';
@@ -36,13 +34,11 @@ class _DashboardState extends State<Dashboard> {
         case '/page3':
           return Page3();
         default:
-          return HomePage();
+          return Home();
       }
     }
 
     return Scaffold(
-      appBar: CustomAppBar(title: 'Dashboard'),
-      drawer: CustomDrawer(onPageSelected: _changePage), // Pasamos el callback
       body: getPageWidget(_selectedRoute), // Mostramos la página seleccionada
     );
   }
